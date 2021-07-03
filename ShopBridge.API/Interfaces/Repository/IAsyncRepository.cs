@@ -8,8 +8,9 @@ namespace ShopBridge.Interfaces.Repository
     public interface IAsyncRepository<T> where T : EntityBase
     {
 
+        Task<List<T>> ListAllAsync();
         Task<T> GetByIdAsync(int id);
-        Task<IReadOnlyList<T>> ListAllAsync();
         Task<T> AddAsync(T entity);
+        IQueryable<T> Queryable();
     }
 }
