@@ -12,7 +12,7 @@ namespace ShopBridge.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class InventoryController : ControllerBase
     {
         readonly IInventoryService _inventoryService;

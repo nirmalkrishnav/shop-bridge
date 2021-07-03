@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using ShopBridge.DTOs; 
+using ShopBridge.DTOs;
 using ShopBridge.Entities;
 using ShopBridge.Interfaces.Service;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -17,6 +18,8 @@ namespace ShopBridge.Service
     {
         //readonly SignInManager<AppUser> _signInManager;
         readonly UserManager<AppUser> _userManager;
+
+
         private readonly TokenSettings _applicationSecret;
 
         public AuthService(
@@ -54,9 +57,10 @@ namespace ShopBridge.Service
                 if (result)
                 {
 
+                    var userRoles = await _userManager.GetRolesAsync(user);
                     return new TokenResult()
                     {
-                        Token = GenerateJWT(user.Id),
+                        Token = GenerateJWT(user.Id, userRoles),
                         Success = true
                     };
                 }
@@ -75,14 +79,18 @@ namespace ShopBridge.Service
 
             }
         }
-        private string GenerateJWT(int userId)
+        private string GenerateJWT(int userId, IList<string> roles)
         {
+           
             var tokenDescription = new SecurityTokenDescriptor
             {
+
                 Subject = new ClaimsIdentity(new Claim[]
-                   {
-                        new Claim(ClaimTypes.NameIdentifier , userId.ToString())
-                   }),
+               {
+                        new Claim(ClaimTypes.NameIdentifier , userId.ToString()),
+                        new Claim(ClaimTypes.Role , string.Join(",", roles)),
+
+               }),
                 Expires = DateTime.UtcNow.Add(_applicationSecret.TokenLifeSpan),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_applicationSecret.Secret)), SecurityAlgorithms.HmacSha256),
             };
