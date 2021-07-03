@@ -9,5 +9,6 @@ namespace ShopBridge.Interfaces.Service
     public interface IInventoryService
     {
         Task<List<DTOs.Inventory>> GetAll();
+        Task<bool> AddToInventory(DTOs.Inventory inv);
     }
 }

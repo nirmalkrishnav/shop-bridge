@@ -38,8 +38,9 @@ namespace ShopBridge.API.Controllers
 
         // POST: api/Inventory
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<bool> Post([FromBody] DTOs.Inventory inv)
         {
+            return await _inventoryService.AddToInventory(inv);
         }
 
         // PUT: api/Inventory/5

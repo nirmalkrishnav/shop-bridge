@@ -28,7 +28,26 @@ namespace ShopBridge.Services
                     Id = e.Id,
                     Title = e.Title
                 })
-                .ToListAsync(); ;
+                .ToListAsync();
+        }
+
+        public async Task<bool> AddToInventory(DTOs.Inventory inv)
+        {
+            Entities.Inventory item = new Entities.Inventory()
+            {
+                Id = inv.Id,
+                Title = inv.Title
+            };
+
+            var res = await _inventoryRepo.AddAsync(item);
+            if (res != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
