@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
 using Microsoft.AspNetCore.Builder;
@@ -12,7 +13,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using ShopBridge.IOC;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using ShopBridge.DTOs;
+using Microsoft.OpenApi.Models;
 
 namespace ShopBridge.API
 {
@@ -30,10 +35,40 @@ namespace ShopBridge.API
         {
             services.AddControllers();
             services.ConfigureIoCForApi();
-            services.AddDbContext<AppDbContext>(op =>
-               op.UseSqlServer(Configuration.GetConnectionString("DbConnection"), x => x.MigrationsAssembly("ShopBridge.Infrastructure.DataAccess"))
-           );
-            services.AddSwaggerGen();
+            services.ConfigureDatabase(Configuration);
+
+
+            services.Configure<TokenSettings>(Configuration.GetSection("TokenSettings"));
+            JwtConfigureAuthentication(services);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    BearerFormat = "JWT",
+                    Scheme = "bearer",
+                    Description = "Specify the authorization token.",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                    {
+                        {
+                            new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = JwtBearerDefaults.AuthenticationScheme
+                                }
+                            },
+                            new string[] {}
+                        }
+                });
+
+            });
+
 
 
         }
@@ -51,11 +86,39 @@ namespace ShopBridge.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+        }
+
+        private void JwtConfigureAuthentication(IServiceCollection services)
+        {
+            var key = Encoding.UTF8.GetBytes(Configuration["TokenSettings:Secret"]);
+
+            var tokenValidationParameter = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                ClockSkew = TimeSpan.Zero,
+            };
+
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            }).AddJwtBearer(item =>
+            {
+                item.RequireHttpsMetadata = false;
+                item.SaveToken = false;
+                item.TokenValidationParameters = tokenValidationParameter;
             });
         }
 

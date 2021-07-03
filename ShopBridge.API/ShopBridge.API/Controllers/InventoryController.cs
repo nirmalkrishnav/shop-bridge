@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShopBridge.Interfaces.Service;
 using ShopBridge.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ShopBridge.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class InventoryController : ControllerBase
     {
         readonly IInventoryService _inventoryService;

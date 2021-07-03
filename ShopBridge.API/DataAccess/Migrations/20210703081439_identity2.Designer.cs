@@ -4,14 +4,16 @@ using DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ShopBridge.Infrastructure.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210703081439_identity2")]
+    partial class identity2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,13 +148,13 @@ namespace ShopBridge.Infrastructure.DataAccess.Migrations
                         .HasName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AppRoles");
+                    b.ToTable("AspNetRoles");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "a9006003-36c6-448d-b6d0-0de3fc591f72",
+                            ConcurrencyStamp = "b9a08b1e-eed5-4d56-aed9-61ec667b2268",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         });
@@ -222,14 +224,14 @@ namespace ShopBridge.Infrastructure.DataAccess.Migrations
                         .HasName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AppUsers");
+                    b.ToTable("AspNetUsers");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "70a596cb-f6d1-4fd7-9386-acc6b576d9e2",
+                            ConcurrencyStamp = "5ce8b262-49cd-4953-a85c-899c8cf3a74e",
                             Email = "admin1@shopbridge.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
