@@ -20,6 +20,8 @@ namespace ShopBridge.IOC
         {
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
             services.AddScoped<IInventoryService, InventoryService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+
             services.AddScoped<IAuthService, AuthService>();
 
             return services;
