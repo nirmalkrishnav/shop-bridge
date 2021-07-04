@@ -55,38 +55,30 @@ namespace ShopBridge.Service
                 return new TokenResult()
                 {
                     Success = false,
-                    Errors = "Invalid user"
+                    Errors = "Invalid Credentials"
                 };
             }
 
-            try
+            var result = await _userManager.CheckPasswordAsync(user, model.Password);
+            if (result)
             {
 
-                var result = await _userManager.CheckPasswordAsync(user, model.Password);
-                if (result)
+                var userRoles = await _userManager.GetRolesAsync(user);
+                return new TokenResult()
                 {
-
-                    var userRoles = await _userManager.GetRolesAsync(user);
-                    return new TokenResult()
-                    {
-                        Token = GenerateJWT(user.Id, userRoles),
-                        Success = true
-                    };
-                }
-                else
-                {
-                    return new TokenResult()
-                    {
-                        Success = false,
-                        Errors = "Invalid user"
-                    };
-                }
+                    Token = GenerateJWT(user.Id, userRoles),
+                    Success = true
+                };
             }
-            catch (Exception e)
+            else
             {
-                throw new InvalidOperationException(e.Message);
-
+                return new TokenResult()
+                {
+                    Success = false,
+                    Errors = "Invalid Credentials"
+                };
             }
+
         }
         private string GenerateJWT(int userId, IList<string> roles)
         {
@@ -109,6 +101,41 @@ namespace ShopBridge.Service
             var token = tokenHandler.WriteToken(securityToken);
             return token;
         }
+
+
+        //
+        // Summary: Insecure way to resets password for an existing user
+        //
+        // TODO:  Need 2 factor auth in this process
+        //
+        public async Task<TokenResult> Reset(TokenRequest model)
+        {
+            var user = await _userManager.FindByEmailAsync(model.Username);
+            if (user == null)
+            {
+                return new TokenResult()
+                {
+                    Success = false,
+                    Errors = "Invalid user"
+                };
+            }
+
+            var identityResult = await _userManager.RemovePasswordAsync(user);
+            if (!identityResult.Succeeded)
+                throw new InvalidOperationException("Password reset failed");
+
+            identityResult = await _userManager.AddPasswordAsync(user, model.Password);
+            if (!identityResult.Succeeded)
+                throw new InvalidOperationException("Failed to update your new password. Check the password complexity requirements");
+
+            identityResult = await _userManager.UpdateAsync(user);
+            if (!identityResult.Succeeded)
+                throw new InvalidOperationException("Updation of user failed");
+            await _userManager.AddToRoleAsync(user, "Admin");
+            return await Login(model);
+
+        }
+
 
     }
 

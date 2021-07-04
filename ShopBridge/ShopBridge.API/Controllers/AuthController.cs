@@ -34,5 +34,17 @@ namespace ShopBridge.API.Controllers
         {
             return await _authService.Login(model);
         }
+
+        //
+        // Summary: Insecure way to resets password for an existing user
+        //
+        // TODO:  Need 2 factor auth in this process
+        //
+        [HttpPost("reset")]
+        [AllowAnonymous]
+        public async Task<TokenResult> Reset(TokenRequest model)
+        {
+            return await _authService.Reset(model);
+        }
     }
 }

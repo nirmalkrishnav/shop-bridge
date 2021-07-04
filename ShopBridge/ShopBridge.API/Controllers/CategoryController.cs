@@ -45,12 +45,5 @@ namespace ShopBridge.API.Controllers
             return await _categoryService.AddToCategory(category);
         }
 
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public async Task<bool> Delete(int id)
-        {
-            return await _categoryService.DeleteById(id);
-        }
     }
 }

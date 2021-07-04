@@ -8,5 +8,7 @@ namespace ShopBridge.Interfaces.Service
     {
         Task<TokenResult> Login(TokenRequest model);
         Task<bool> Register(User user);
+        Task<TokenResult> Reset(TokenRequest model);
+
     }
 }

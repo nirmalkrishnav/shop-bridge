@@ -915,3 +915,98 @@ System.InvalidCastException: The field of type System.Int32 must be a string, ar
 2021-07-04T20:17:07.0221275+05:30 2b4bf896-3c10-4fe4-9cca-b7962c2adc22 [INF]  (//) HTTP "POST" "/api/Inventory" responded 200 in 3398.5500 ms
 2021-07-04T20:17:12.4654875+05:30 a124ff07-9c7b-4c6e-9ba1-2f4eeda5dba0 [WRN]  (//) Bad request on path: '/api/Inventory'
 2021-07-04T20:17:12.4671629+05:30 a124ff07-9c7b-4c6e-9ba1-2f4eeda5dba0 [INF]  (//) HTTP "POST" "/api/Inventory" responded 400 in 15.5349 ms
+2021-07-04T20:41:46.2539194+05:30 9c10099b-9053-463d-8868-d8926d30d22c [INF]  (//) HTTP "POST" "/api/Auth/reset" responded 200 in 3656.6189 ms
+2021-07-04T20:42:09.2499850+05:30 8c1dc450-e10f-40f4-8ec1-130f9f24b12c [INF]  (//) HTTP "GET" "/api/Category" responded 403 in 103.6112 ms
+2021-07-04T20:42:55.5859538+05:30 027af489-6e30-4ab8-af9a-a070909ed85c [INF]  (//) HTTP "GET" "/api/Category" responded 403 in 1312.6458 ms
+2021-07-04T20:43:32.0543546+05:30 eee4a495-28ae-400b-9d4c-34b73b31b705 [INF]  (//) HTTP "GET" "/api/Category" responded 403 in 10.4808 ms
+2021-07-04T20:47:12.4030733+05:30 d8fb329d-f14b-4d51-bd96-e050f493c6f8 [ERR]  (//) Failed executing DbCommand ("73"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0"
+2021-07-04T20:47:12.5100222+05:30 d8fb329d-f14b-4d51-bd96-e050f493c6f8 [ERR]  (//) An exception occurred while iterating over the results of a query for context type '"DataAccess.AppDbContext"'."
+""Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'AspNetUsers'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:3bc24b0b-9023-4a2a-a7c4-30545ab17dda
+Error Number:208,State:1,Class:16"
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'AspNetUsers'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:3bc24b0b-9023-4a2a-a7c4-30545ab17dda
+Error Number:208,State:1,Class:16
+2021-07-04T20:47:12.5229297+05:30 d8fb329d-f14b-4d51-bd96-e050f493c6f8 [ERR]  (//) Invalid object name 'AspNetUsers'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'AspNetUsers'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByNameAsync(String userName)
+   at Microsoft.AspNetCore.Identity.UserValidator`1.ValidateUserName(UserManager`1 manager, TUser user, ICollection`1 errors)
+   at Microsoft.AspNetCore.Identity.UserValidator`1.ValidateAsync(UserManager`1 manager, TUser user)
+   at Microsoft.AspNetCore.Identity.UserManager`1.ValidateUserAsync(TUser user)
+   at Microsoft.AspNetCore.Identity.UserManager`1.CreateAsync(TUser user)
+   at Microsoft.AspNetCore.Identity.UserManager`1.CreateAsync(TUser user, String password)
+   at ShopBridge.Service.AuthService.Register(User newUser) in C:\development\shopbridge\ShopBridge\Services\AuthService.cs:line 38
+   at ShopBridge.API.Controllers.AuthController.Register(User user) in C:\development\shopbridge\ShopBridge\ShopBridge.API\Controllers\AuthController.cs:line 28
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ShopBridge.API.GlobalErrorHandler.Invoke(HttpContext context) in C:\development\shopbridge\ShopBridge\ShopBridge.API\GlobalErrorHandler.cs:line 28
+ClientConnectionId:3bc24b0b-9023-4a2a-a7c4-30545ab17dda
+Error Number:208,State:1,Class:16
+2021-07-04T20:47:12.6645158+05:30 d8fb329d-f14b-4d51-bd96-e050f493c6f8 [ERR]  (//) HTTP "POST" "/api/Auth/register" responded 500 in 2039.4968 ms
+2021-07-04T20:49:21.6244496+05:30 2b16fae5-278f-4af2-b7f9-a9dd17e3cfda [WRN]  (//) User null validation failed: "DuplicateUserName".
+2021-07-04T20:49:21.6499689+05:30 2b16fae5-278f-4af2-b7f9-a9dd17e3cfda [INF]  (//) HTTP "POST" "/api/Auth/register" responded 200 in 2248.6602 ms
+2021-07-04T20:49:34.2294987+05:30 f61a01cb-8de7-4ce8-ad2f-3b8ecb2445ae [INF]  (//) HTTP "POST" "/api/Auth/reset" responded 200 in 734.8575 ms
+2021-07-04T20:49:48.8072872+05:30 ba19ab57-224e-427d-ab6e-8858e76c257a [INF]  (//) HTTP "GET" "/api/Category" responded 200 in 113.6057 ms
+2021-07-04T20:50:13.6003987+05:30 d81c31f3-4319-44c0-88a0-a44ba2c9d8be [INF]  (//) HTTP "POST" "/api/Category" responded 200 in 193.6870 ms
+2021-07-04T20:50:40.6333839+05:30 350621e7-5c8c-4375-9f82-8d218afb8c84 [INF]  (//) HTTP "GET" "/api/Category/2" responded 200 in 37.9569 ms
+2021-07-04T20:50:52.3320961+05:30 72c4fe0b-52e0-429c-bbd2-c5249b14d843 [INF]  (//) Item 1 was deleted
+2021-07-04T20:50:52.3333339+05:30 72c4fe0b-52e0-429c-bbd2-c5249b14d843 [INF]  (//) HTTP "DELETE" "/api/Category/1" responded 200 in 69.1117 ms
+2021-07-04T20:52:45.9931303+05:30 fd848445-2800-4b9a-85ec-fe84a13705db [INF]  (//) HTTP "GET" "/api/Inventory" responded 200 in 5320.1494 ms

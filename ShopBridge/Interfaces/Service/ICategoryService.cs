@@ -11,6 +11,5 @@ namespace ShopBridge.Interfaces.Service
         Task<List<Category>> GetAll();
         Task<Category> GetById(int Id);
         Task<bool> AddToCategory(Category cat);
-        Task<bool> DeleteById(int Id);
     }
 }

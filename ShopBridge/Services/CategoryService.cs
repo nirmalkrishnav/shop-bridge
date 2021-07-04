@@ -68,19 +68,5 @@ namespace ShopBridge.Services
                           }
                  ).FirstOrDefaultAsync();
         }
-
-        public async Task<bool> DeleteById(int Id)
-        {
-            var item = await _categoryRepo.GetByIdAsync(Id);
-            if (item == null)
-            {
-                throw new InvalidOperationException($"category of {Id} not found");
-            }
-
-            var res = await _categoryRepo.DeleteAsync(item);
-            _logger.LogInformation($"Item {Id} was deleted");
-            return true;
-
-        }
     }
 }
