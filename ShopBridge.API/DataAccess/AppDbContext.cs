@@ -18,10 +18,10 @@ namespace DataAccess
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Inventory>().HasData(
-                new Inventory { Id = 1, Title = "Water bottle" }
+                new Inventory { Id = 1, Name = "Water bottle" }
                 );
             modelBuilder.Entity<Inventory>().HasData(
-               new Inventory { Id = 2, Title = "Fountain Pen" }
+               new Inventory { Id = 2, Name = "Fountain Pen" }
                );
 
             modelBuilder.Entity<AppUser>(e => e.ToTable(name: "AppUsers"));
@@ -35,7 +35,6 @@ namespace DataAccess
             modelBuilder.Entity<AppRole>().HasData(
                new AppRole { Id = 1, Name = "Admin", NormalizedName = "Admin" }
                );
-
 
         }
         public DbSet<Inventory> Inventory { get; set; }

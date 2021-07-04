@@ -4,6 +4,6 @@ namespace ShopBridge.Entities
 {
     public class Inventory : EntityBase
     {
-        public string Title { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -29,11 +29,11 @@ namespace ShopBridge.Tests
             {
                 new DTOs.Inventory{
                     Id= 1,
-                    Title= "sample1"
+                    Name= "sample1"
                 },
                      new DTOs.Inventory{
                     Id= 2,
-                    Title= "sample2"
+                    Name= "sample2"
                 }
             };
 
@@ -55,7 +55,7 @@ namespace ShopBridge.Tests
                 new DTOs.Inventory
                 {
                     Id = 1,
-                    Title = "sample1"
+                    Name = "sample1"
 
                 };
             var expected = true;

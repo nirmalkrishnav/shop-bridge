@@ -26,7 +26,7 @@ namespace ShopBridge.Services
                 .Select(e => new DTOs.Inventory
                 {
                     Id = e.Id,
-                    Title = e.Title
+                    Name = e.Name
                 })
                 .ToListAsync();
         }
@@ -36,7 +36,7 @@ namespace ShopBridge.Services
             Entities.Inventory item = new Entities.Inventory()
             {
                 Id = inv.Id,
-                Title = inv.Title
+                Name = inv.Name
             };
             try
             {
