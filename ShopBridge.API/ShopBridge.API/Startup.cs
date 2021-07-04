@@ -18,6 +18,7 @@ using ShopBridge.IOC;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using ShopBridge.DTOs;
 using Microsoft.OpenApi.Models;
+using Serilog;
 
 namespace ShopBridge.API
 {
@@ -82,8 +83,9 @@ namespace ShopBridge.API
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSerilogRequestLogging();
+            app.UseMiddleware(typeof(GlobalErrorHandler));
             app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthentication();
