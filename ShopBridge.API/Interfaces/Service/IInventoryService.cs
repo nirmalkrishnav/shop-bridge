@@ -13,6 +13,7 @@ namespace ShopBridge.Interfaces.Service
         Task<bool> AddToInventory(Inventory inv);
         Task<bool> DeleteById(int Id);
         Task<bool> Update(int Id, Inventory inv);
+        Task<FilteredResult> FilteredResults(QueryParams queryParams);
 
 
     }

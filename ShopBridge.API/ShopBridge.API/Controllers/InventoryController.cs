@@ -38,6 +38,13 @@ namespace ShopBridge.API.Controllers
             return await _inventoryService.GetById(Id);
         }
 
+        // POST: api/Inventory/FilteredResults
+        [HttpPost("GetFilteredResults")]
+        public async Task<FilteredResult> GetFilteredResults([FromBody] QueryParams queryParams)
+        {
+            return await _inventoryService.FilteredResults(queryParams);
+        }
+
         // POST: api/Inventory
         [HttpPost]
         public async Task<bool> Post([FromBody] Inventory inv)

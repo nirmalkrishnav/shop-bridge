@@ -59,6 +59,7 @@ namespace ShopBridge.Services
                 IsActive = inv.IsActive,
                 Quantity = inv.Quantity,
                 Status = inv.Status,
+                CreatedDate = DateTime.UtcNow
             };
             var res = await _inventoryRepo.AddAsync(item);
             if (res != null)
@@ -114,14 +115,78 @@ namespace ShopBridge.Services
             }
 
             var item = await _inventoryRepo.GetByIdAsync(Id);
-            if(item == null)
+            if (item == null)
             {
                 throw new InvalidOperationException($"item of {Id} not found");
             }
 
             var entObj = InventoryMapper.ToEntity(inv, item);
+            entObj.ModifiedDate = DateTime.UtcNow;
             await _inventoryRepo.UpdateAsync(entObj);
             return true;
         }
+
+        public async Task<FilteredResult> FilteredResults(QueryParams queryParams)
+        {
+            var query = _inventoryRepo.Queryable();
+
+            // variable stoage to have latest count would be nice
+            var total = await query.ToListAsync();
+
+            var result = await (from inv in _inventoryRepo.Queryable()
+                                join cat in _categoryRepo.Queryable() on inv.CategoryId equals cat.Id
+                                orderby inv.Name
+                                select new DTOs.Inventory
+                                {
+                                    Id = inv.Id,
+                                    Name = inv.Name,
+                                    Description = inv.Description,
+                                    Price = inv.Price,
+                                    Unit = inv.Unit,
+                                    IsActive = inv.IsActive,
+                                    Quantity = inv.Quantity,
+                                    Status = inv.Status,
+                                    Category = new DTOs.Category { Id = cat.Id, CategoryName = cat.CategoryName, Code = cat.Code },
+                                }
+             )
+            .ToListAsync();
+
+            result = AddOrderBy(result, queryParams.OrderBy, queryParams.OrderByDesc);
+
+            result.Skip(queryParams.PageSize * (queryParams.Page - 1))
+            .Take(queryParams.PageSize);
+
+            return new FilteredResult()
+            {
+                Result = result,
+                QueryParams = queryParams,
+                Total = total.Count,
+                Page = queryParams.Page
+            };
+        }
+
+        private static List<DTOs.Inventory> AddOrderBy(List<DTOs.Inventory> Results, string OrderBy, bool OrderByDesc)
+        {
+            switch (OrderBy)
+            {
+                case "Name":
+                    if (OrderByDesc)
+                        return Results.OrderByDescending(t => t.Name).ToList();
+                    else
+                        return Results.OrderBy(t => t.Name).ToList();
+                case "Quantity":
+                    if (OrderByDesc)
+                        return Results.OrderByDescending(t => t.Quantity).ToList();
+                    else
+                        return Results.OrderBy(t => t.Quantity).ToList();
+                default:
+                    if (OrderByDesc)
+                        return Results.OrderByDescending(t => t.Id).ToList();
+                    else
+                        return Results.OrderBy(t => t.Id).ToList();
+            }
+
+        }
+
     }
 }

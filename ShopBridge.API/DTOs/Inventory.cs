@@ -5,8 +5,7 @@ namespace ShopBridge.DTOs
 {
     public class Inventory
     {
-
-        public  int Id { get; set; }
+        public int Id { get; set; }
         [Required(ErrorMessage = "Name is required")] 
         public string Name { get; set; }
         public string Description { get; set; }
@@ -21,5 +20,7 @@ namespace ShopBridge.DTOs
         [Required(ErrorMessage = "Status is required")]
         public int Status { get; set; }
         public bool IsActive { get; set; } = true;
+        public DateTime CreatedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
     }
 }
