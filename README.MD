@@ -8,7 +8,7 @@
 Run as ShopBridge.API as Startup project
 
 #### Swagger UI
-Swagger is configured in the below url for documentation
+Swagger is configured in the below URL for documentation
 https://localhost:44391/swagger/index.html
 
 #### Updating Database
@@ -18,14 +18,14 @@ Update-Database -Verbose -Context AppDbContext -Project DataAccess -StartupProje
 ```
 
 #### Key Values 
-1. Used clean code archtecture, Controller => Services => Repository pattern with EF ORM
-2. Explicit DTO and Entity objects. DTOs can be used for UI data massaging, entity representing data store model	
+1. Used clean code architecture, Controller => Services => Repository pattern with EF ORM
+2. Explicit DTO and Entity objects. DTOs can be used for UI data massaging, the entity representing data store model	
 3. Global exception handler to catch exceptions
 4. Exceptions are logged with serilog, logged to ./logs folder
 5. Identity Server added for handling Authentication, 
 6. Application Authorization with JWT tokens
 7. Controller level Role base authorization for ```Admins```
-8. Self documentation with Swagger swashbuckle
+8. Self-documentation with Swagger Swashbuckle
 
 
 #### Effort
