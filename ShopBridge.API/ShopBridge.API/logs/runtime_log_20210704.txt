@@ -114,3 +114,4 @@ System.InvalidOperationException: The seed entity for entity type 'Inventory' ca
    at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
    at ShopBridge.API.GlobalErrorHandler.Invoke(HttpContext context) in C:\development\shopbridge\ShopBridge.API\ShopBridge.API\GlobalErrorHandler.cs:line 28
 2021-07-04T09:27:07.0193206+05:30 ef4e9f9a-e402-4364-bed6-1a8eb67eede3 [ERR]  (//) HTTP "POST" "/api/Auth/login" responded 500 in 17194.7074 ms
+2021-07-04T10:52:16.6323597+05:30 d11168b7-f50f-4cbc-88f5-c662cc04040a [WRN]  (//) User null password validation failed: "PasswordRequiresNonAlphanumeric;PasswordRequiresDigit;PasswordRequiresUpper".

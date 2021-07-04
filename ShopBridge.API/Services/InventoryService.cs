@@ -13,22 +13,36 @@ namespace ShopBridge.Services
     public class InventoryService : IInventoryService
     {
         readonly IAsyncRepository<Entities.Inventory> _inventoryRepo;
+        readonly IAsyncRepository<Entities.Category> _categoryRepo;
+
         public InventoryService(
-            IAsyncRepository<Entities.Inventory> inventoryRepo
+            IAsyncRepository<Entities.Inventory> inventoryRepo,
+            IAsyncRepository<Entities.Category> categoryRepo
+
             )
         {
             _inventoryRepo = inventoryRepo;
-
+            _categoryRepo = categoryRepo;
         }
         public async Task<List<DTOs.Inventory>> GetAll()
         {
-            return await _inventoryRepo.Queryable()
-                .Select(e => new DTOs.Inventory
-                {
-                    Id = e.Id,
-                    Name = e.Name
-                })
-                .ToListAsync();
+            return await (from inv in _inventoryRepo.Queryable()
+                          join cat in _categoryRepo.Queryable() on inv.CategoryId equals cat.Id
+                    select new DTOs.Inventory
+                    {
+                        Id = inv.Id,
+                        Name = inv.Name,
+                        CategoryId = inv.CategoryId,
+                        Description = inv.Description,
+                        Price = inv.Price,
+                        Unit = inv.Unit,
+                        IsActive = inv.IsActive,
+                        Quantity = inv.Quantity,
+                        Status = inv.Status,
+                        CategoryName = cat.CategoryName,
+                        Code = cat.Code
+                    }
+                    ).ToListAsync();
         }
 
         public async Task<bool> AddToInventory(DTOs.Inventory inv)
@@ -36,7 +50,14 @@ namespace ShopBridge.Services
             Entities.Inventory item = new Entities.Inventory()
             {
                 Id = inv.Id,
-                Name = inv.Name
+                Name = inv.Name,
+                Category = new Entities.Category { Id = inv.CategoryId },
+                Description = inv.Description,
+                Price = inv.Price,
+                Unit = inv.Unit,
+                IsActive = inv.IsActive,
+                Quantity = inv.Quantity,
+                Status = inv.Status,
             };
             try
             {

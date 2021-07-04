@@ -24,11 +24,23 @@ namespace DataAccess
 
 
             modelBuilder.Entity<AppUser>().HasData(
-              new AppUser { Id = 1, Email = "admin1@shopbridge.com", NormalizedEmail = @"admin1@shopbridge.com".ToUpperInvariant(), UserName = @"admin1@shopbridge.com", NormalizedUserName = @"admin1@shopbridge.com".ToUpperInvariant() }
+              new AppUser
+              {
+                  Id = 1,
+                  Email = "admin1@shopbridge.com",
+                  NormalizedEmail = @"admin1@shopbridge.com".ToUpperInvariant(),
+                  UserName = @"admin1@shopbridge.com",
+                  NormalizedUserName = @"admin1@shopbridge.com".ToUpperInvariant()
+              }
               );
 
             modelBuilder.Entity<AppRole>().HasData(
-               new AppRole { Id = 1, Name = "Admin", NormalizedName = "Admin" }
+               new AppRole
+               {
+                   Id = 1,
+                   Name = "Admin",
+                   NormalizedName = "Admin"
+               }
                );
 
             modelBuilder.SeedCategory();

@@ -23,7 +23,7 @@ namespace ShopBridge.API.Controllers
         }
        
         [HttpPost("register")]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public async Task<bool> Register(User user)
         {
             return await _authService.Register(user);
