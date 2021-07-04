@@ -8,7 +8,6 @@ using ShopBridge.Interfaces.Repository;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Interfaces.Service;
 
 namespace ShopBridge.Services
 {

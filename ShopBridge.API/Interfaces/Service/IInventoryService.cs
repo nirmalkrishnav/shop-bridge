@@ -12,7 +12,8 @@ namespace ShopBridge.Interfaces.Service
         Task<Inventory> GetById(int Id);
         Task<bool> AddToInventory(Inventory inv);
         Task<bool> DeleteById(int Id);
+        Task<bool> Update(int Id, Inventory inv);
 
-        
+
     }
 }

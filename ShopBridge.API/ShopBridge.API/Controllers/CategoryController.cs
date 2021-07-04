@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Interfaces.Service;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShopBridge.DTOs;
+using ShopBridge.Interfaces.Service;
 
 namespace ShopBridge.API.Controllers
 {
@@ -30,7 +30,7 @@ namespace ShopBridge.API.Controllers
         }
 
         // GET: api/Category/5
-        [HttpGet("{Id}", Name = "Get")]
+        [HttpGet("{Id}", Name = "GetCategory")]
         public async Task<Category> Get(int Id)
         {
             return await _categoryService.GetById(Id);

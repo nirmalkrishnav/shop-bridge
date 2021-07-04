@@ -8,6 +8,7 @@ using ShopBridge.Interfaces.Repository;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using ShopBridge.Common;
 
 namespace ShopBridge.Services
 {
@@ -103,6 +104,24 @@ namespace ShopBridge.Services
             _logger.LogInformation($"Item {Id} was deleted");
             return true;
 
+        }
+
+        public async Task<bool> Update(int Id, DTOs.Inventory inv)
+        {
+            if (Id < 1)
+            {
+                throw new InvalidOperationException($"Id is not valid");
+            }
+
+            var item = await _inventoryRepo.GetByIdAsync(Id);
+            if(item == null)
+            {
+                throw new InvalidOperationException($"item of {Id} not found");
+            }
+
+            var entObj = InventoryMapper.ToEntity(inv, item);
+            await _inventoryRepo.UpdateAsync(entObj);
+            return true;
         }
     }
 }

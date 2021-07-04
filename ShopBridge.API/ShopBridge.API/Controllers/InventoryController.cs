@@ -32,7 +32,7 @@ namespace ShopBridge.API.Controllers
         }
 
         // GET: api/Inventory/5
-        [HttpGet("{Id}", Name = "Get")]
+        [HttpGet("{Id}", Name = "GetInventory")]
         public async Task<Inventory> Get(int Id)
         {
             return await _inventoryService.GetById(Id);
@@ -40,15 +40,16 @@ namespace ShopBridge.API.Controllers
 
         // POST: api/Inventory
         [HttpPost]
-        public async Task<bool> Post([FromBody] DTOs.Inventory inv)
+        public async Task<bool> Post([FromBody] Inventory inv)
         {
             return await _inventoryService.AddToInventory(inv);
         }
 
         // PUT: api/Inventory/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<bool> Put(int id, [FromBody] Inventory inv)
         {
+            return await _inventoryService.Update(id, inv);
         }
 
         // DELETE: api/ApiWithActions/5
