@@ -38,15 +38,14 @@ namespace ShopBridge.Services
                 Id = inv.Id,
                 Title = inv.Title
             };
-
-            var res = await _inventoryRepo.AddAsync(item);
-            if (res != null)
+            try
             {
+                var res = await _inventoryRepo.AddAsync(item);
                 return true;
             }
-            else
+            catch (Exception e)
             {
-                return false;
+                throw new Exception(e.Message);
             }
         }
 

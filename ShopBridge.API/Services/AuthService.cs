@@ -50,6 +50,15 @@ namespace ShopBridge.Service
 
 
             var user = await _userManager.FindByEmailAsync(model.Username);
+            if (user == null)
+            {
+                return new TokenResult()
+                {
+                    Success = false,
+                    Errors = "Invalid user"
+                };
+            }
+
             try
             {
 
@@ -81,7 +90,7 @@ namespace ShopBridge.Service
         }
         private string GenerateJWT(int userId, IList<string> roles)
         {
-           
+
             var tokenDescription = new SecurityTokenDescriptor
             {
 
