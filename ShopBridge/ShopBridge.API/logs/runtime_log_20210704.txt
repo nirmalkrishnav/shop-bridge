@@ -1113,3 +1113,154 @@ Error Number:547,State:0,Class:16
    at ShopBridge.API.GlobalErrorHandler.Invoke(HttpContext context) in C:\development\shopbridge\ShopBridge\ShopBridge.API\GlobalErrorHandler.cs:line 28
 2021-07-04T20:54:10.8937452+05:30 f59f1768-1340-4846-ad8f-c2a3b3f733eb [ERR]  (//) HTTP "POST" "/api/Inventory" responded 500 in 1280.6840 ms
 2021-07-04T20:54:19.5759295+05:30 195387b7-2596-4a64-a0c4-8528311e9eb7 [INF]  (//) HTTP "POST" "/api/Inventory" responded 200 in 155.2602 ms
+2021-07-04T21:04:53.1306988+05:30 bab81d70-52ee-4860-aadf-4f54c7cb4341 [INF]  (//) HTTP "GET" "/api/Inventory/2" responded 403 in 8.1597 ms
+2021-07-04T21:04:57.4286408+05:30 5057a761-329e-47e7-b2ef-128392288d16 [INF]  (//) HTTP "GET" "/api/Inventory/2" responded 403 in 2.5752 ms
+2021-07-04T21:05:15.3349240+05:30 a5a8fe2e-22b5-4818-9714-e4d5cb429737 [WRN]  (//) User "1" is already in role "Admin".
+2021-07-04T21:05:15.3996045+05:30 a5a8fe2e-22b5-4818-9714-e4d5cb429737 [INF]  (//) HTTP "POST" "/api/Auth/reset" responded 200 in 321.0158 ms
+2021-07-04T21:05:27.8807790+05:30 b8f184b8-7948-424d-a9f2-8fa504690813 [INF]  (//) HTTP "GET" "/api/Inventory/2" responded 200 in 70.8860 ms
+2021-07-04T21:05:37.3114137+05:30 0b99d4b7-e82d-4f10-abbd-2eb3cc84b1df [INF]  (//) Item 2 was deleted
+2021-07-04T21:05:37.3124845+05:30 0b99d4b7-e82d-4f10-abbd-2eb3cc84b1df [INF]  (//) HTTP "DELETE" "/api/Inventory/2" responded 200 in 45.2947 ms
+2021-07-04T21:05:38.7582650+05:30 6e647f47-be50-4b61-acb7-023b1193ce38 [ERR]  (//) item of 2 not found
+System.InvalidOperationException: item of 2 not found
+   at ShopBridge.Services.InventoryService.DeleteById(Int32 Id) in C:\development\shopbridge\ShopBridge\Services\InventoryService.cs:line 104
+   at ShopBridge.API.Controllers.InventoryController.Delete(Int32 Id) in C:\development\shopbridge\ShopBridge\ShopBridge.API\Controllers\InventoryController.cs:line 66
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ShopBridge.API.GlobalErrorHandler.Invoke(HttpContext context) in C:\development\shopbridge\ShopBridge\ShopBridge.API\GlobalErrorHandler.cs:line 28
+2021-07-04T21:05:38.7621150+05:30 6e647f47-be50-4b61-acb7-023b1193ce38 [ERR]  (//) HTTP "DELETE" "/api/Inventory/2" responded 500 in 43.6378 ms
+2021-07-04T21:05:54.4385071+05:30 22d47819-051a-4499-8991-b302bd71a2a0 [ERR]  (//) item of 3 not found
+System.InvalidOperationException: item of 3 not found
+   at ShopBridge.Services.InventoryService.Update(Int32 Id, Inventory inv) in C:\development\shopbridge\ShopBridge\Services\InventoryService.cs:line 123
+   at ShopBridge.API.Controllers.InventoryController.Put(Int32 id, Inventory inv) in C:\development\shopbridge\ShopBridge\ShopBridge.API\Controllers\InventoryController.cs:line 59
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ShopBridge.API.GlobalErrorHandler.Invoke(HttpContext context) in C:\development\shopbridge\ShopBridge\ShopBridge.API\GlobalErrorHandler.cs:line 28
+2021-07-04T21:05:54.4398195+05:30 22d47819-051a-4499-8991-b302bd71a2a0 [ERR]  (//) HTTP "PUT" "/api/Inventory/3" responded 500 in 57.1008 ms
+2021-07-04T21:06:14.6713281+05:30 c309e8c8-4896-4454-9d23-1f4af2e9cb20 [WRN]  (//) Bad request on path: '/api/Inventory/9'
+2021-07-04T21:06:14.6717596+05:30 c309e8c8-4896-4454-9d23-1f4af2e9cb20 [INF]  (//) HTTP "PUT" "/api/Inventory/9" responded 400 in 33.1646 ms
+2021-07-04T21:06:22.2203912+05:30 0736cecf-7193-4771-9819-ceb58666e936 [ERR]  (//) Failed executing DbCommand ("14"ms) [Parameters=["@p10='?' (DbType = Int32), @p0='?' (DbType = Int32), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = Boolean), @p4='?' (DbType = DateTime2), @p5='?' (Size = 4000), @p6='?' (DbType = Double), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SET NOCOUNT ON;
+UPDATE [Inventory] SET [CategoryId] = @p0, [CreatedDate] = @p1, [Description] = @p2, [IsActive] = @p3, [ModifiedDate] = @p4, [Name] = @p5, [Price] = @p6, [Quantity] = @p7, [Status] = @p8, [Unit] = @p9
+WHERE [Id] = @p10;
+SELECT @@ROWCOUNT;"
+2021-07-04T21:06:22.2248199+05:30 0736cecf-7193-4771-9819-ceb58666e936 [ERR]  (//) An exception occurred in the database while saving changes for context type '"DataAccess.AppDbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The UPDATE statement conflicted with the FOREIGN KEY constraint \"FK_Inventory_Category_CategoryId\". The conflict occurred in database \"SHOP_BRIDGE_DEV\", table \"dbo.Category\", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:5b77293e-8e1c-4bbc-8b69-1201b552de29
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_Inventory_Category_CategoryId". The conflict occurred in database "SHOP_BRIDGE_DEV", table "dbo.Category", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:5b77293e-8e1c-4bbc-8b69-1201b552de29
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2021-07-04T21:06:22.2324883+05:30 0736cecf-7193-4771-9819-ceb58666e936 [ERR]  (//) An error occurred while updating the entries. See the inner exception for details.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while updating the entries. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): The UPDATE statement conflicted with the FOREIGN KEY constraint "FK_Inventory_Category_CategoryId". The conflict occurred in database "SHOP_BRIDGE_DEV", table "dbo.Category", column 'Id'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__164_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.<>c.<.cctor>b__274_0(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+ClientConnectionId:5b77293e-8e1c-4bbc-8b69-1201b552de29
+Error Number:547,State:0,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(DbContext _, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at EY.EOS.Infrastructure.DataAccess.EfRepository`1.UpdateAsync(T entity) in C:\development\shopbridge\ShopBridge\DataAccess\EfRepository.cs:line 51
+   at ShopBridge.Services.InventoryService.Update(Int32 Id, Inventory inv) in C:\development\shopbridge\ShopBridge\Services\InventoryService.cs:line 125
+   at ShopBridge.API.Controllers.InventoryController.Put(Int32 id, Inventory inv) in C:\development\shopbridge\ShopBridge\ShopBridge.API\Controllers\InventoryController.cs:line 59
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at ShopBridge.API.GlobalErrorHandler.Invoke(HttpContext context) in C:\development\shopbridge\ShopBridge\ShopBridge.API\GlobalErrorHandler.cs:line 28
+2021-07-04T21:06:22.2366809+05:30 0736cecf-7193-4771-9819-ceb58666e936 [ERR]  (//) HTTP "PUT" "/api/Inventory/9" responded 500 in 87.8063 ms
+2021-07-04T21:06:33.0476830+05:30 17df74cf-bb87-43d7-83eb-66379aab2834 [INF]  (//) HTTP "PUT" "/api/Inventory/9" responded 200 in 76.4441 ms
+2021-07-04T21:06:56.3765121+05:30 7d1c60e9-050a-450d-bda1-c5997b6049d6 [INF]  (//) Item 9 was deleted
+2021-07-04T21:06:56.3780571+05:30 7d1c60e9-050a-450d-bda1-c5997b6049d6 [INF]  (//) HTTP "DELETE" "/api/Inventory/9" responded 200 in 48.2076 ms
+2021-07-04T21:07:22.1784610+05:30 eb050032-4d99-42b7-9e5d-9c085069282e [INF]  (//) HTTP "POST" "/api/Inventory/GetFilteredResults" responded 200 in 65.7839 ms

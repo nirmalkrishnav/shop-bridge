@@ -269,3 +269,4 @@ Thumbs.db
 /src/Presentation/WebUI/logs/*
 !/src/Presentation/WebUI/logs/do_not_delete
 .vscode/
+./ShopBridge/[Ll]ogs/
