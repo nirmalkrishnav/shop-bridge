@@ -12,5 +12,6 @@ namespace ShopBridge.Interfaces.Repository
         Task<T> GetByIdAsync(int id);
         Task<T> AddAsync(T entity);
         IQueryable<T> Queryable();
+        Task<T> DeleteAsync(T entity);
     }
 }

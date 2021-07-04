@@ -37,5 +37,12 @@ namespace EY.EOS.Infrastructure.DataAccess
         {
             return _dbContext.Set<T>().AsQueryable();
         }
+
+        public async Task<T> DeleteAsync(T entity)
+        {
+            _dbContext.Set<T>().Remove(entity);
+            await _dbContext.SaveChangesAsync();
+            return entity;
+        }
     }
 }

@@ -32,10 +32,10 @@ namespace ShopBridge.API.Controllers
         }
 
         // GET: api/Inventory/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{Id}", Name = "Get")]
+        public async Task<Inventory> Get(int Id)
         {
-            return "value";
+            return await _inventoryService.GetById(Id);
         }
 
         // POST: api/Inventory
@@ -52,9 +52,10 @@ namespace ShopBridge.API.Controllers
         }
 
         // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpDelete("{Id}")]
+        public async Task<bool> Delete(int Id)
         {
+            return await _inventoryService.DeleteById(Id);
         }
     }
 }
